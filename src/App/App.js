@@ -45,7 +45,10 @@ class App extends Component {
     return (
       <div className={styles.App}>
         <Background>
-          
+          <div className={styles.App__header}>
+            <h1 className={styles.App__header__main}>WikiSearcher</h1>
+            <h3 className={styles.App__header__sub}>Ask me anything</h3>
+          </div>
           <input type="text" onChange={this.inputChangedHandler} onKeyPress={this.inputPressedHandler} />
           <button onClick={this.searchClickedHandler}>Search</button>
         

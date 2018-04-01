@@ -1,0 +1,34 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%; // 1rem = 10px
+
+  @include respond(tablet) { 
+    font-size: 75%; 
+  }
+
+  @include respond(laptop) {
+    font-size: 87.5%; // 1rem = 14px
+  }
+
+  @include respond(laptop-lg) {
+    font-size: 100%; // 1rem = 16px
+  }
+}
+
+body {
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+}
+
+::selection {
+  background-color: $color-secondary;
+  color: $color-white;
+}
