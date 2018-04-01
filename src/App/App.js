@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import styles from './App.scss';
 import axios from 'axios';
+import Background from '../components/UI/Background/Background';
 
 class App extends Component {
   state = {
@@ -43,10 +44,12 @@ class App extends Component {
   render() {
     return (
       <div className={styles.App}>
-        <div>
+        <Background>
+        
           <input type="text" onChange={this.inputChangedHandler} onKeyPress={this.inputPressedHandler} />
           <button onClick={this.searchClickedHandler}>Search</button>
-        </div>
+        
+        </Background>
       </div>
     );
   }
