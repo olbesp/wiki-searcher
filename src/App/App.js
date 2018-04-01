@@ -10,11 +10,13 @@ class App extends Component {
   }
 
   getData = () => {
-    const request = encodeURIComponent(this.state.userInput);
-    axios.get(`https://en.wikipedia.org/w/api.php?action=opensearch&search=${request}&limit=10&namespace=0&origin=*&format=json`)
-      .then(response => {
-        console.log(response);
-      })
+    const request = encodeURIComponent(this.state.userInput.trim());
+    if (request) {
+      axios.get(`https://en.wikipedia.org/w/api.php?action=opensearch&search=${request}&limit=10&namespace=0&origin=*&format=json`)
+        .then(response => {
+          console.log(response);
+        })
+    }
   }
 
   inputChangedHandler = (e) => {
@@ -28,7 +30,7 @@ class App extends Component {
   }
 
   inputPressedHandler = (e) => {
-    if ((e.which === 13 || e.charCode === 13) && this.state.userInput.trim()) {
+    if ((e.which === 13 || e.charCode === 13) && this.state.userInput) {
       this.getData();
     }
   }
