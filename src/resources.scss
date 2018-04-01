@@ -1,0 +1,10 @@
+$section-width: 700px;
+$section-height: 500px;
+$color-white: #d1d1d1;
+
+@mixin section-mixin {
+  margin: 0 auto;
+  width: $section-width;
+  height: $section-height;
+  border: 1px solid red;
+}

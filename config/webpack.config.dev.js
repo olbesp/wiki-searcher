@@ -207,7 +207,16 @@ module.exports = {
                     localIdentName: '[name]__[local]__[hash:base64:5]'
                   }
                 },
-                'sass-loader'
+                'sass-loader',
+                {
+                  loader: 'sass-resources-loader',
+                  options: {
+                    // Provide path to the file with resources
+                    resources: './src/resources.scss',
+                    // Or array of paths
+                    // resources: ['./path/to/vars.scss', './path/to/mixins.scss']
+                  },
+                }
               ]
             })
           },

@@ -44,8 +44,9 @@ class App extends Component {
   render() {
     return (
       <div className={styles.App}>
+      <h1>Hi</h1>
         <Background>
-        
+          
           <input type="text" onChange={this.inputChangedHandler} onKeyPress={this.inputPressedHandler} />
           <button onClick={this.searchClickedHandler}>Search</button>
         
