@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import styles from './App.scss';
 import axios from 'axios';
 import Background from '../components/UI/Background/Background';
+import SearchInput from '../components/SearchInput/SearchInput';
 
 class App extends Component {
   state = {
@@ -48,10 +49,12 @@ class App extends Component {
           <div className={styles.App__header}>
             <h1 className={styles.App__header__main}>WikiSearcher</h1>
             <h3 className={styles.App__header__sub}>Ask me anything</h3>
-          </div>
-          <input type="text" onChange={this.inputChangedHandler} onKeyPress={this.inputPressedHandler} />
-          <button onClick={this.searchClickedHandler}>Search</button>
-        
+          </div>       
+          <SearchInput 
+            changed={this.inputChangedHandler}
+            clicked={this.searchClickedHandler}
+            keyPressed={this.inputPressedHandler}
+          />
         </Background>
       </div>
     );
