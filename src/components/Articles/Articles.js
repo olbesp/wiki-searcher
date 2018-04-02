@@ -4,11 +4,13 @@ import styles from './Articles.scss';
 import Article from './Article/Article';
 
 const articles = (props) => {
+
   const data = {
     headers: [ ...props.data[1] ],
     texts: [ ...props.data[2] ],
     links: [ ...props.data[3] ]
   };
+
   let listOfArticles = [];
   for (let i = 0; i < data.headers.length; i++) {
     listOfArticles.push(
@@ -23,7 +25,9 @@ const articles = (props) => {
 
   return (
     <main className={styles.Articles}>
-      {listOfArticles}
+      <ul className={styles.Articles__list}>
+        {listOfArticles}
+      </ul>
     </main>
   );
 };
