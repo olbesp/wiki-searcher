@@ -2,6 +2,7 @@ import React from 'react';
 
 import styles from './Articles.scss';
 import Article from './Article/Article';
+import TableImage from '../UI/TableImage/TableImage';
 
 const articles = (props) => {
 
@@ -28,6 +29,7 @@ const articles = (props) => {
       <ul className={styles.Articles__list}>
         {listOfArticles}
       </ul>
+      <TableImage />
     </main>
   );
 };
