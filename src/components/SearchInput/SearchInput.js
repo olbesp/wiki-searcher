@@ -9,12 +9,11 @@ const searchInput = (props) => {
       <input 
         className={styles.SearchInput__input} 
         type="text" 
+        placeholder="Search Wikipedia"
         onChange={props.changed} 
         onKeyPress={props.keyPressed} 
       />
-      <button onClick={props.clicked} className={styles.SearchInput__btn}>
-        <SearchIcon />
-      </button>
+      <SearchIcon clicked={props.clicked} className={styles.SearchInput__btn} />
     </div>
   );
 }

@@ -1,23 +1,49 @@
 .SearchIcon {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   width: 3rem;
-  height: 3rem;
-  transform: rotate(45deg);
+  border: 0;
+  background: none;
+  cursor: pointer;
+  transition: all .3s;
 
-  &__top {
-    width: 40%;
-    height: 40%;
-    border-radius: 100%;
-    border: 3px solid $color-grey;
+  &:focus {
+    outline: none;
   }
 
-  &__bottom {
-    width: 5%;
-    height: 20%;
-    border-radius: 30%;
-    background-color: $color-grey;
+  &:active {
+    transform: scale(.9);
+  }
+
+  &:active &__icon__top {
+    border: 3px solid $color-grey-dark;
+  } 
+
+  &:active &__icon__bottom {
+    background-color: $color-grey-dark;
+  } 
+
+  &__icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 3rem;
+    height: 3rem;
+    transform: rotate(45deg);
+
+    &__top {
+      width: 40%;
+      height: 40%;
+      border-radius: 100%;
+      border: 3px solid $color-grey;
+      transition: all .2s;
+    }
+
+    &__bottom {
+      width: 5%;
+      height: 20%;
+      border-radius: 30%;
+      background-color: $color-grey;
+      transition: all .2s;
+    }
   }
 }

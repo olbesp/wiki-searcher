@@ -6,29 +6,34 @@
   &__input {
     font-family: inherit;
     font-size: inherit;
-    color: inherit;
+    color: $color-grey-dark;
     background-color: $color-white;
     border: none;
     padding: .7rem 2rem;
     border-radius: 100px;
-    width: 60%;
+    width: 70%;
     transition: all .2s;
     margin-right: -3rem;
 
+    @include respond(phone) { width: 60%; }
+    @include respond(tablet) { width: 50%; }
+    @include respond(laptop) { width: 40%; }
+    @include respond(laptop-lg) { width: 30%; }
+
     &:focus {
-      width: 70%;
+      width: 80%;
       outline: none;
       background-color: $color-grey-light;
+
+      @include respond(phone) { width: 70%; }
+      @include respond(tablet) { width: 60%; }
+      @include respond(laptop) { width: 50%; }
+      @include respond(laptop-lg) { width: 40%; }
     }
 
     &::-webkit-input-placeholder {
       font-weight: 100;
+      color: $color-grey;
     }
-  }
-
-  &__btn {
-    width: 3rem;
-    border: 0;
-    background: none;
   }
 }
