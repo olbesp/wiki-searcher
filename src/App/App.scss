@@ -17,4 +17,11 @@
       letter-spacing: 1rem;
     }
   }
+
+  &__searchFail {
+    color: $color-white;
+    text-align: center;
+    margin-top: 3rem;
+    font-size: 1.3rem;
+  }
 }

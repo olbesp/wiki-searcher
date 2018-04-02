@@ -18,9 +18,14 @@ class App extends Component {
     if (request) {
       axios.get(`https://en.wikipedia.org/w/api.php?action=opensearch&search=${request}&limit=10&namespace=0&origin=*&format=json`)
         .then(response => {
-          console.log(response);
-          
-          this.setState({ data: response.data });
+          if (!response.data[1].length) {
+            this.setState({ notFound: true });
+          } else {
+            this.setState({ 
+              data: response.data, 
+              notFound: false 
+            });
+          }
         })
     }
   }
@@ -42,14 +47,19 @@ class App extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return this.state.userInput !== nextState.userInput || this.state.data !== nextState.data;
+    return this.state.userInput !== nextState.userInput || 
+      this.state.data !== nextState.data ||
+      this.state.notFound !== nextState.notFound;
   }
 
 
   render() {
-    let articles = null;
+    let searchResult = null;
+    if (this.state.notFound) {
+      searchResult = <h4 className={styles.App__searchFail}>Sorry, I can't find it</h4>;
+    }
     if (this.state.data) {
-      articles = <Articles data={this.state.data} />;
+      searchResult = <Articles data={this.state.data} />;
     }
     return (
       <div className={styles.App}>
@@ -63,7 +73,7 @@ class App extends Component {
             clicked={this.searchClickedHandler}
             keyPressed={this.inputPressedHandler}
           />
-          {articles}
+          {searchResult}
         </Background>
       </div>
     );
