@@ -10,7 +10,8 @@ class App extends Component {
   state = {
     userInput: '',
     data: null,
-    notFound: false
+    notFound: false,
+    error: false
   }
 
   getData = () => {
@@ -19,14 +20,22 @@ class App extends Component {
       axios.get(`https://en.wikipedia.org/w/api.php?action=opensearch&search=${request}&limit=10&namespace=0&origin=*&format=json`)
         .then(response => {
           if (!response.data[1].length) {
-            this.setState({ notFound: true });
+            this.setState({ 
+              data: null,
+              notFound: true, 
+              error: false 
+            });
           } else {
             this.setState({ 
               data: response.data, 
-              notFound: false 
+              notFound: false,
+              error: false
             });
           }
         })
+        .catch(error => {
+          this.setState({ error: true })
+        });
     }
   }
 
@@ -47,14 +56,20 @@ class App extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return this.state.userInput !== nextState.userInput || 
-      this.state.data !== nextState.data ||
-      this.state.notFound !== nextState.notFound;
+    // return this.state.userInput !== nextState.userInput || 
+    //   this.state.data !== nextState.data ||
+    //   this.state.notFound !== nextState.notFound ||
+    //   this.state.error !== nextState.error;
+    return this.state !== nextState;
   }
 
 
   render() {
+    console.log('render');
     let searchResult = null;
+    if (this.state.error) {
+      searchResult = <h4 className={styles.App__searchFail}>Something went wrong...</h4>;
+    }
     if (this.state.notFound) {
       searchResult = <h4 className={styles.App__searchFail}>Sorry, I can't find it</h4>;
     }
