@@ -4,11 +4,12 @@ import styles from './App.scss';
 import axios from 'axios';
 import Background from '../components/UI/Background/Background';
 import SearchInput from '../components/SearchInput/SearchInput';
+import Articles from '../components/Articles/Articles';
 
 class App extends Component {
   state = {
     userInput: '',
-    searchResults: null
+    data: null
   }
 
   getData = () => {
@@ -16,7 +17,7 @@ class App extends Component {
     if (request) {
       axios.get(`https://en.wikipedia.org/w/api.php?action=opensearch&search=${request}&limit=10&namespace=0&origin=*&format=json`)
         .then(response => {
-          console.log(response);
+          this.setState({ data: response.data });
         })
     }
   }
@@ -38,23 +39,28 @@ class App extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return this.state.userInput !== nextState.userInput;
+    return this.state.userInput !== nextState.userInput || this.state.data !== nextState.data;
   }
 
 
   render() {
+    let articles = null;
+    if (this.state.data) {
+      articles = <Articles data={this.state.data} />;
+    }
     return (
       <div className={styles.App}>
         <Background>
-          <div className={styles.App__header}>
+          <header className={styles.App__header}>
             <h1 className={styles.App__header__main}>WikiSearcher</h1>
             <h3 className={styles.App__header__sub}>Ask me anything</h3>
-          </div>       
+          </header>       
           <SearchInput 
             changed={this.inputChangedHandler}
             clicked={this.searchClickedHandler}
             keyPressed={this.inputPressedHandler}
           />
+          {articles}
         </Background>
       </div>
     );
