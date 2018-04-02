@@ -9,7 +9,8 @@ import Articles from '../components/Articles/Articles';
 class App extends Component {
   state = {
     userInput: '',
-    data: null
+    data: null,
+    notFound: false
   }
 
   getData = () => {
@@ -17,6 +18,8 @@ class App extends Component {
     if (request) {
       axios.get(`https://en.wikipedia.org/w/api.php?action=opensearch&search=${request}&limit=10&namespace=0&origin=*&format=json`)
         .then(response => {
+          console.log(response);
+          
           this.setState({ data: response.data });
         })
     }
