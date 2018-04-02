@@ -1,0 +1,23 @@
+.SearchIcon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 3rem;
+  height: 3rem;
+  transform: rotate(45deg);
+
+  &__top {
+    width: 40%;
+    height: 40%;
+    border-radius: 100%;
+    border: 3px solid $color-grey;
+  }
+
+  &__bottom {
+    width: 5%;
+    height: 20%;
+    border-radius: 30%;
+    background-color: $color-grey;
+  }
+}
