@@ -1,13 +1,18 @@
 .Article {
   margin: 0 auto;
   position: relative;
-  padding: 1.5rem;
+  padding: 1.5rem 2.5rem;
   line-height: 1.5rem;
+  color: $color-white;
   border-radius: .3rem;
   transition: all .3s;
   box-shadow: 0 .5rem .5rem rgba($color-black, .8) inset,
     0 -.5rem .5rem rgba($color-black, .8) inset;
   animation: appearFromBottom .3s backwards;
+
+  & a {
+    text-decoration: none;
+  }
 
   &::before {
     position: absolute;
@@ -21,39 +26,18 @@
     border-right: 2px dashed rgba($color-black, .5);
   }
 
-  &__header {
-    font-size: 1.3rem;
-    color: $color-grey-light;
-  }
+  // &__header {
+  //   font-size: 1.3rem;
+  // }
 
   &__text {
     font-size: 1.1rem;
-    color: $color-white;
-  }
-
-  &__link,
-  &__link:visited {
-    padding: .2rem;
-    color: $color-secondary;
-    background-color: $color-primary;
-    text-decoration: none;
-    transition: all .2s;
-    box-shadow: 
-      1px 0 $color-primary-light,
-      0 1px $color-primary-dark,
-      2px 1px $color-primary-light,
-      1px 2px $color-primary-dark,
-      3px 2px $color-primary-light,
-      2px 3px $color-primary-dark,
-      4px 3px $color-primary-light,
-      3px 4px $color-primary-dark;
-  }
-
-  &__link:hover {
-    color: $color-secondary-dark;
   }
 }
 
+.link {
+  text-decoration: none;
+}
 
 @keyframes appearFromBottom {
   from { transform: translateY(600vh); }
