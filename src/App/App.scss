@@ -1,4 +1,6 @@
 .App {
+  transform: translateY(35vh);
+  transition: all 1s;
 
   &__header {
     padding: 1.5rem 0;
@@ -24,4 +26,13 @@
     margin-top: 3rem;
     font-size: 1.3rem;
   }
+}
+
+.animate {
+  animation: moveOnTop 1s forwards;
+}
+
+@keyframes moveOnTop {
+  from { transform: translateY(35vh); }
+  to { transform: translateY(0); }
 }

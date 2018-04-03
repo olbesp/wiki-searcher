@@ -13,7 +13,7 @@ const background = (props) => {
   const createBackground = (imageSizePath) => {
     return <div 
       className={styles.Background} 
-      style={{ backgroundImage: `url(${imageSizePath})` }}
+      style={{ backgroundImage: `linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)), url(${imageSizePath})` }}
       >{props.children}</div>;
   };
 

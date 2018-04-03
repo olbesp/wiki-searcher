@@ -10,6 +10,7 @@ class App extends Component {
   state = {
     userInput: '',
     data: null,
+    animate: false,
     notFound: false,
     error: false
   }
@@ -23,20 +24,23 @@ class App extends Component {
             this.setState({ 
               data: null,
               notFound: true, 
-              error: false 
+              error: false,
+              animate: true 
             });
           } else {
             this.setState({ 
               data: response.data, 
               notFound: false,
-              error: false
+              error: false,
+              animate: false
             });
           }
         })
         .catch(error => {
           this.setState({ 
             data: null, 
-            error: true 
+            error: true,
+            animate: false
           });
         });
     }
@@ -59,16 +63,11 @@ class App extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    // return this.state.userInput !== nextState.userInput || 
-    //   this.state.data !== nextState.data ||
-    //   this.state.notFound !== nextState.notFound ||
-    //   this.state.error !== nextState.error;
     return this.state !== nextState;
   }
 
 
   render() {
-    console.log('render');
     let searchResult = null;
     if (this.state.error) {
       searchResult = <h4 className={styles.App__searchFail}>Something went wrong...</h4>;
@@ -77,23 +76,25 @@ class App extends Component {
       searchResult = <h4 className={styles.App__searchFail}>Sorry, I can't find it</h4>;
     }
     if (this.state.data) {
-      searchResult = <Articles data={this.state.data} />;
+      searchResult = <Articles data={this.state.data} animate={this.state.animate} />;
     }
     return (
-      <div className={styles.App}>
+      <React.Fragment>
         <Background>
-          <header className={styles.App__header}>
-            <h1 className={styles.App__header__main}>WikiSearcher</h1>
-            <h3 className={styles.App__header__sub}>Ask me anything</h3>
-          </header>       
-          <SearchInput 
-            changed={this.inputChangedHandler}
-            clicked={this.searchClickedHandler}
-            keyPressed={this.inputPressedHandler}
-          />
+          <div className={[styles.App, this.state.animate ? styles.animate : null].join(' ')}>
+            <header className={styles.App__header}>
+              <h1 className={styles.App__header__main}>WikiSearcher</h1>
+              <h3 className={styles.App__header__sub}>Ask me anything</h3>
+            </header>       
+            <SearchInput 
+              changed={this.inputChangedHandler}
+              clicked={this.searchClickedHandler}
+              keyPressed={this.inputPressedHandler}
+            />
+          </div>
           {searchResult}
         </Background>
-      </div>
+      </React.Fragment>
     );
   }
 }
