@@ -21,7 +21,9 @@ const article = (props) => {
         className={styles.Article}
         style={{
           width: `${random(20) + 80}%`,
-          backgroundImage: `linear-gradient(${rgbDark}, ${rgbLight}, ${rgbDark})`
+          backgroundImage: `linear-gradient(${rgbDark}, ${rgbLight}, ${rgbDark})`,
+          animationDelay: `${props.animationDelay}s`,
+          zIndex: props.zIndex
         }}
       >
         <h3 className={styles.Article__header}>{props.header}</h3>

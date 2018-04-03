@@ -25,14 +25,14 @@ class App extends Component {
               data: null,
               notFound: true, 
               error: false,
-              animate: true 
+              animate: false 
             });
           } else {
             this.setState({ 
               data: response.data, 
               notFound: false,
               error: false,
-              animate: false
+              animate: true
             });
           }
         })
@@ -76,7 +76,7 @@ class App extends Component {
       searchResult = <h4 className={styles.App__searchFail}>Sorry, I can't find it</h4>;
     }
     if (this.state.data) {
-      searchResult = <Articles data={this.state.data} animate={this.state.animate} />;
+      searchResult = <Articles data={this.state.data} />;
     }
     return (
       <React.Fragment>

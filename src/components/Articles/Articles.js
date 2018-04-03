@@ -20,6 +20,8 @@ const articles = (props) => {
         header={data.headers[i]} 
         text={data.texts[i]}
         link={data.links[i]}
+        animationDelay={(data.headers.length - i) * 0.1}
+        zIndex={i + 1}
       />
     );
   }
