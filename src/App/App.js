@@ -25,7 +25,6 @@ class App extends Component {
               data: null,
               notFound: true, 
               error: false,
-              animate: false 
             });
           } else {
             this.setState({ 
@@ -39,8 +38,7 @@ class App extends Component {
         .catch(error => {
           this.setState({ 
             data: null, 
-            error: true,
-            animate: false
+            error: true
           });
         });
     }
