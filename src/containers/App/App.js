@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 
 import styles from './App.scss';
 import axios from 'axios';
-import Background from '../components/UI/Background/Background';
-import SearchInput from '../components/SearchInput/SearchInput';
-import Articles from '../components/Articles/Articles';
+import Background from '../../components/UI/Background/Background';
+import SearchInput from '../../components/SearchInput/SearchInput';
+import Articles from '../Articles/Articles';
 
 class App extends Component {
   state = {

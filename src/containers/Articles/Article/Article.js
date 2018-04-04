@@ -23,14 +23,15 @@ const article = (props) => {
             }
           }}
         >
-          <h3 className={styles.Article__header} style={{ fontSize: `${props.headerSize}rem` }}>{props.header}</h3>
+          <h3 
+            className={styles.Article__header} 
+            style={{fontSize: `${props.headerSize}rem`}}
+          >
+            {props.header}
+          </h3>
         </div>
       </a>
     </li>
   );
 }
 export default Radium(article);
-
-// <p className={styles.Article__text}>
-//   {`${props.text.length < 100 ? props.text : props.text.slice(0, 100) + '...'}`}
-// </p>

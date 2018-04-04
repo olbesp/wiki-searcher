@@ -27,7 +27,7 @@ class Articles extends Component {
     ]
 
     for (let i = 0; i < data.headers.length; i++) {
-      let colors = { red: random(50), green: random(50), blue: random(50) };
+      let colors = { red: random(100), green: random(100), blue: random(100) };
       let rgbDark = `rgb(${colors.red}, ${colors.green}, ${colors.blue})`;
       let rgbLight = `rgb(${colors.red + 50}, ${colors.green + 50}, ${colors.blue + 50})`;
 
@@ -37,7 +37,6 @@ class Articles extends Component {
         fontFamily: `${fonts[random(fonts.length)]}`,
         fontWeight: 400,
         textTransform: `${['uppercase', 'capitalize'][random(2)]}`,
-        textAlign: `${['right', 'center', 'left'][random(3)]}`,
         letterSpacing: random(5)
       };
 
@@ -49,7 +48,7 @@ class Articles extends Component {
           link={data.links[i]}
           animationDelay={(data.headers.length - i) * 0.1}
           zIndex={i + 1}
-          headerSize={random(2) + 1.3}
+          headerSize={random(2) + 1}
           style={dynamicStyle}
         />
       );
@@ -68,8 +67,6 @@ class Articles extends Component {
   }
 
   render() {
-    
-    console.log('render')
     return (
       <main className={styles.Articles}>
         <ul className={styles.Articles__list}>
