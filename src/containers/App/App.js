@@ -81,7 +81,7 @@ class App extends Component {
         <Background>
           <div className={[styles.App, this.state.animate ? styles.animate : null].join(' ')}>
             <header className={styles.App__header}>
-              <h1 className={styles.App__header__main}>WikiSearcher</h1>
+              <h1 className={styles.App__header__main}>Crowdbotics WikiSearcher</h1>
               <h3 className={styles.App__header__sub}>Ask me anything</h3>
             </header>       
             <SearchInput 
